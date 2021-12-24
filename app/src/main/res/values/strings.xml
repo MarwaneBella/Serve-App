@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Services</string>
+
+    <string name="hintUser">Username</string>
+    <string name="hintEmail">Email</string>
+    <string name="hintPass">Password</string>
+    <string name="hintPhone">Phone</string>
+    <string name="btnSing">SIGN UP</string>
+    <string name="btnLog">LOG IN</string>
+    <string name="textCreateAcc">Don\'t have an account? Sign up</string>
+    <string name="textHaveAcc">Have an account? Log in</string>
+    <string name="textMale">Male</string>
+    <string name="textFemale">Female</string>
+    <string name="select">Select category</string>
+    <string-array name="category1">
+        <item>Delivery</item>
+        <item>Bill payment</item>
+        <item>Grocery shopping</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="category2">
+        <item>All</item>
+        <item>Delivery</item>
+        <item>Bill payment</item>
+        <item>Grocery shopping</item>
+        <item>Other</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

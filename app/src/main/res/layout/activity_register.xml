@@ -13,14 +13,17 @@
         android:id="@+id/logo"
         android:layout_width="176dp"
         android:layout_height="61dp"
-        android:layout_marginTop="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12"
         app:srcCompat="@drawable/logo"
         app:tint="@color/secondColor" />
+
     <EditText
-        android:id="@+id/TextUsername"
+        android:id="@+id/etUsername"
         android:layout_width="267dp"
         android:layout_height="50dp"
         android:layout_marginTop="56dp"
@@ -31,12 +34,15 @@
         android:inputType="textEmailAddress"
         android:textColor="@color/black"
         android:textColorHint="@color/textHintColor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <EditText
-        android:id="@+id/TextEmail"
+        android:id="@+id/etEmail"
         android:layout_width="267dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
@@ -47,28 +53,14 @@
         android:inputType="textEmailAddress"
         android:textColor="@color/black"
         android:textColorHint="@color/textHintColor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsername"
+        app:layout_constraintVertical_bias="0.038" />
 
     <EditText
-        android:id="@+id/TextPhone"
-        android:layout_width="267dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/edittext"
-        android:ems="13"
-        android:gravity="center"
-        android:hint="@string/hintPhone"
-        android:inputType="phone"
-        android:textColor="@color/black"
-        android:textColorHint="@color/textHintColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextPassword" />
-
-    <EditText
-        android:id="@+id/TextPassword"
+        android:id="@+id/etPassword"
         android:layout_width="267dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
@@ -80,19 +72,24 @@
         android:textColor="@color/black"
         android:textColorHint="@color/textHintColor"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        app:layout_constraintVertical_bias="0.032" />
+
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/rgGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
 
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextPhone">
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintVertical_bias="0.021">
 
         <RadioButton
             android:id="@+id/checkbox_Male"
@@ -103,7 +100,9 @@
             android:text="@string/textMale"
             android:textColor="@color/secondColor"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:checked="true"
+            />
 
         <RadioButton
             android:id="@+id/checkbox_female"
@@ -114,12 +113,12 @@
             android:textColor="@color/secondColor"
             android:textSize="20sp"
             android:textStyle="bold"
-
             />
+
     </RadioGroup>
 
     <android.widget.Button
-        android:id="@+id/Button"
+        android:id="@+id/btnRegister"
         android:layout_width="144dp"
         android:layout_height="48dp"
         android:layout_marginTop="64dp"
@@ -127,13 +126,15 @@
         android:text="@string/btnSing"
         android:textColor="@color/secondColor"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/rgGender"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/TextReg"
+        android:id="@+id/tvLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -144,7 +145,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Button"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
         app:layout_constraintVertical_bias="0.0" />
 
 

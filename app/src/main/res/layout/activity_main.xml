@@ -20,16 +20,15 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="94dp"
-            android:layout_height="32dp"
+            android:layout_width="122dp"
+            android:layout_height="43dp"
             android:layout_gravity="left"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo"
-            app:tint="@color/secondColor"
-            />
+            app:srcCompat="@drawable/finalservice"
+            app:tint="@color/secondColor" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgProfile"

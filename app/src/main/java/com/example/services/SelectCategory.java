@@ -14,7 +14,6 @@ public class SelectCategory {
     private AutoCompleteTextView autoCompleteTxt;
     private ArrayAdapter<String> adapterItems;
     private View rootView;
-    private Context ctx;
 
     public SelectCategory(View rootView,String[] items) {
         this.rootView = rootView;
@@ -28,12 +27,12 @@ public class SelectCategory {
         adapterItems = new ArrayAdapter<String>(rootView.getContext(),R.layout.list_item,items);
         autoCompleteTxt.setAdapter(adapterItems);
 
-
         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
                 Toast.makeText(rootView.getContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+
             }
         });
     }

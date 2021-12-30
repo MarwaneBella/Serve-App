@@ -2,15 +2,31 @@ package com.example.services;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.location.SettingInjectorService;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Patterns;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -62,17 +78,81 @@ public class AddServiceFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View  rootView = inflater.inflate(R.layout.fragment_add_service, container, false);
+        ///select category
+        AutoCompleteTextView autoCompleteTxt;
+        ArrayAdapter<String> adapterItems;
 
         String[] items =  getResources().getStringArray(R.array.category1);
-        SelectCategory select = new SelectCategory(rootView,items);
-        select.setItems();
+        autoCompleteTxt = rootView.findViewById(R.id.auto_complete_txt);
+        adapterItems = new ArrayAdapter<String>(rootView.getContext(),R.layout.list_item,items);
+        autoCompleteTxt.setAdapter(adapterItems);
 
+        /// get data
+        EditText etTitle = rootView.findViewById(R.id.etTitle);
+        EditText etLocation = rootView.findViewById(R.id.etLocation);
+        EditText etPrice = rootView.findViewById(R.id.etPrice);
+        EditText etDesc = rootView.findViewById(R.id.etDesc);
+        EditText etPhone = rootView.findViewById(R.id.etPhone);
+        Button post = rootView.findViewById(R.id.post);
+
+        ///send data
+        post.setOnClickListener(v->{
+
+
+            String category = autoCompleteTxt.getText().toString().trim();
+            String titleService = etTitle.getText().toString().trim();
+            String location = etLocation.getText().toString().trim();
+            String price = etPrice.getText().toString().trim();
+            String description = etDesc.getText().toString().trim();
+            String phone = etPhone.getText().toString().trim();
+
+            if(titleService.isEmpty()){
+                etTitle.setError("Title is required!");
+                etTitle.requestFocus();
+                return;
+            }
+            if(location.isEmpty()){
+                etLocation.setError("Location is required!");
+                etLocation.requestFocus();
+                return;
+            }
+            if(price.isEmpty()){
+                etPrice.setError("Price is required!");
+                etPrice.requestFocus();
+                return;
+            }
+            if(description.isEmpty()){
+                etDesc.setError("Description is required!");
+                etDesc.requestFocus();
+                return;
+            }
+            if(phone.isEmpty()){
+                etPhone.setError("Phone is required!");
+                etPhone.requestFocus();
+                return;
+            }
+
+            Service service = new Service(category,titleService,location,price,description,phone);
+            FirebaseDatabase.getInstance().getReference("Services")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .setValue(service).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(rootView.getContext(), "Successfully!",Toast.LENGTH_LONG).show();
+
+                    }
+                    else {
+                        Toast.makeText(rootView.getContext(), "Failed!",Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        });
 
 
 

@@ -46,7 +46,7 @@
                     android:id="@+id/auto_complete_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/select"
+                    android:text="Delivery"
                     android:textSize="20sp"
 
                     android:inputType="none"/>
@@ -70,12 +70,9 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/etService"
-
-
+                    android:id="@+id/etTitle"
                     android:textSize="20sp"
                     android:imeOptions="actionNext"
-
                     android:inputType="text"
                     />
 
@@ -109,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tilPhone"
                 app:prefixText="+212"
+                app:prefixTextAppearance="@style/prefix"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
                 app:endIconMode="clear_text"
@@ -117,8 +115,9 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:gravity="center"
                 >
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/etPhone"
@@ -186,6 +185,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <android.widget.Button
+                android:id="@+id/post"
                 android:layout_width="161dp"
                 android:layout_height="75dp"
                 android:layout_marginTop="50dp"

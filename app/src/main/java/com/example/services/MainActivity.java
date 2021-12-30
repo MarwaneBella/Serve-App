@@ -10,13 +10,13 @@ import android.view.MenuItem;
 import android.widget.PopupMenu;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.firebase.auth.FirebaseAuth;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     MeowBottomNavigation bottomNavigation;
     public Integer idFragment;
-
 
 
     @Override
@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 MainActivity.this.startActivity(intent1);
                 return true;
             case R.id.item2:
-                Intent intentt = new Intent(MainActivity.this, Login.class);
-                MainActivity.this.startActivity(intentt);
+                FirebaseAuth.getInstance().signOut();
+                MainActivity.this.startActivity(new Intent(MainActivity.this, Login.class));
                 return true;
             default:
                 return false;

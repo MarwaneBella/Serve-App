@@ -6,8 +6,8 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="388dp"
+        android:layout_height="128dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
@@ -44,31 +44,30 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintHorizontal_bias="0.343"
             app:layout_constraintStart_toEndOf="@+id/avatar"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.442" />
+            app:layout_constraintVertical_bias="0.045" />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="219dp"
             android:layout_height="34dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="132dp"
+            android:layout_marginEnd="28dp"
             android:text="payment of facture"
             android:textColor="@color/secondColor"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatar"
-            app:layout_constraintVertical_bias="0.933" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.946" />
 
         <TextView
             android:id="@+id/price"
             android:layout_width="116dp"
             android:layout_height="28dp"
-            android:layout_marginEnd="28dp"
+            android:layout_marginEnd="76dp"
             android:text="4000 DH"
             android:textColor="@color/secondColor"
             android:textSize="20sp"
@@ -76,7 +75,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username"
-            app:layout_constraintVertical_bias="0.941" />
+            app:layout_constraintVertical_bias="0.18" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

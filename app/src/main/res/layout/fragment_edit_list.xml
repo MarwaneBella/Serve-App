@@ -11,16 +11,17 @@
         android:layout_height="match_parent"
         android:paddingHorizontal="10dp"
         android:orientation="vertical">
-    <TextView
-        android:id="@+id/textService"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textSize="40sp"
-        android:textStyle="bold|italic"
-        android:layout_marginBottom="30dp"
-        android:text="My Services" />
+
+        <TextView
+            android:id="@+id/textService"
+            android:layout_width="387dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="My Services"
+            android:textSize="40sp"
+            android:textStyle="bold|italic" />
 
     <ListView
         android:id="@+id/list_item"

@@ -36,13 +36,13 @@
 
             <AutoCompleteTextView
                 android:id="@+id/auto_complete_txt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="375dp"
+                android:layout_height="48dp"
                 android:background="@color/firstColor"
-                android:textStyle="bold"
-                android:textSize="20sp"
+                android:inputType="none"
                 android:textColor="@color/firstColor"
-                android:inputType="none" />
+                android:textSize="10dp"
+                android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ListView
@@ -50,9 +50,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/textInputLayout"
-            android:divider="@null"
+            android:layout_marginTop="3dp"
 
-            />
+            android:divider="@null" />
 
     </RelativeLayout>
 

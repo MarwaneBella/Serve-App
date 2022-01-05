@@ -8,17 +8,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListBaseAdapter extends BaseAdapter {
     Context context;
-    String[] usernames;
-    int[] userImages;
-    String[] descriptions;
-    float[] prices;
+    ArrayList<String> usernames;
+    ArrayList<Integer> userImages;
+    ArrayList<String> descriptions;
+    ArrayList<String> prices;
     LayoutInflater inflater;
 
-    public ListBaseAdapter(Context ctx,String[] usernames, int[] userImages, String[] descriptions, float[] prices){
+    public ListBaseAdapter(Context ctx,ArrayList<String> usernames, ArrayList<Integer> userImages, ArrayList<String> descriptions, ArrayList<String> prices){
         this.context = ctx;
         this.usernames =usernames;
         this.userImages = userImages;
@@ -29,7 +31,7 @@ public class ListBaseAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return usernames.length;
+        return usernames.size();
     }
 
     @Override
@@ -49,10 +51,10 @@ public class ListBaseAdapter extends BaseAdapter {
         CircleImageView avatar = (CircleImageView) convertView.findViewById(R.id.avatar);
         TextView description = (TextView) convertView.findViewById(R.id.description);
         TextView price = (TextView) convertView.findViewById(R.id.price);
-        username.setText(usernames[position]);
-        avatar.setImageResource(userImages[position]);
-        description.setText(descriptions[position]);
-        price.setText(Float.toString(prices[position]));
+        username.setText(usernames.get(position));
+        avatar.setImageResource(userImages.get(position));
+        description.setText(descriptions.get(position));
+        price.setText(prices.get(position));
         return convertView;
     }
 }

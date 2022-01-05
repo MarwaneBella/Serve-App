@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
@@ -138,8 +139,9 @@ public class AddServiceFragment extends Fragment {
             }
 
             Service service = new Service(category,titleService,location,price,description,phone);
-            FirebaseDatabase.getInstance().getReference("Services")
-                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+
+            DatabaseReference servicesRef = FirebaseDatabase.getInstance().getReference("Services");
+                    servicesRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(servicesRef.push().getKey())
                     .setValue(service).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

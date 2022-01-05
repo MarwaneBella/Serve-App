@@ -19,6 +19,7 @@ public class ServiceInfos extends AppCompatActivity {
             intent.putExtra("id",1+"");
             ServiceInfos.this.startActivity(intent);
         });
+
     }
 
 }

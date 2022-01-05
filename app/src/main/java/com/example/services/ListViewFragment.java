@@ -77,19 +77,7 @@ public class ListViewFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
 
         //select bar
-        String[] items =  getResources().getStringArray(R.array.category2);
 
-        SelectCategory select = new SelectCategory(rootView,items);
-        select.setItems();
-
-        //list view
-        listView = rootView.findViewById(R.id.list_item);
-        ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,descriptions,prices);
-        listView.setAdapter(Adapter);
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent = new Intent(getContext(), ServiceInfos.class);
-            startActivity(intent);
-        });
 
         return rootView;
     }

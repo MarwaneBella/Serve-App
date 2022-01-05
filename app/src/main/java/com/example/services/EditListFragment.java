@@ -1,6 +1,7 @@
 package com.example.services;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,41 +82,41 @@ public class EditListFragment extends Fragment {
 
 
         /////////
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        FirebaseAuth hi = FirebaseAuth.getInstance();
-
+        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String> prices = new ArrayList<>();
+        ArrayList<String> usernames = new ArrayList<>();
+        ArrayList<Integer> userImages = new ArrayList<>();
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userNameRef = rootRef.child("Users").child(hi.getCurrentUser().getUid()).child("password");
+        DatabaseReference servicesRef = rootRef.child("Services").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-        ValueEventListener eventListener = new ValueEventListener() {
+        servicesRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    String username = dataSnapshot.getValue(String.class);
-
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                for(DataSnapshot snapshot :datasnapshot.getChildren()){
+                    Service service = snapshot.getValue(Service.class);
+                    titles.add(service.getTitleService());
+                    prices.add(service.getPrice());
                 }
+
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        };
-        userNameRef.addListenerForSingleValueEvent(eventListener);
+        });
+        userImages.add(R.drawable.a);
+        usernames.add("marwane bella");
+        prices.add("30");
+        titles.add("pay");
 
+        ///////////////
 
-        String usernames[]={"marwane bella","Marwane Bella"};
-        int  userImages[]= {R.drawable.a,R.drawable.d};
-        String descriptions []= {"aaaaaaaaa","bbbbbbb"};
-        float prices[]={100,200};
-        ListView listView ;
-        //////////////////
-
-
-        listView = rootView.findViewById(R.id.list_item);
-        ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,descriptions,prices);
+        ListView listView = rootView.findViewById(R.id.list_item);
+        ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,titles,prices);
         listView.setAdapter(Adapter);
+
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(getContext(), EditMyService.class);
             startActivity(intent);

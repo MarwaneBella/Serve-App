@@ -153,7 +153,7 @@ public class Profile extends AppCompatActivity {
                                         if(snapshot.exists()) {
                                             if(snapshot.hasChild("uimage")){
                                                 FirebaseStorage.getInstance().getReferenceFromUrl(snapshot.child("uimage").getValue().toString()).delete();
-                                                Toast.makeText(Profile.this, "1", Toast.LENGTH_SHORT).show();
+
                                             }
                                             dbreference.child(UserID).updateChildren(map);
                                         }
@@ -191,7 +191,7 @@ public class Profile extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()) {
                         if(snapshot.hasChild("uimage")) {
-                            Toast.makeText(Profile.this, "2", Toast.LENGTH_SHORT).show();
+
                             Glide.with(getApplicationContext()).load(snapshot.child("uimage").getValue().toString()).into(uimage);
                         }
                     }

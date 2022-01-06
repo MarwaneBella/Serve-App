@@ -32,7 +32,6 @@ public class SelectCategory {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
                 Toast.makeText(rootView.getContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
-
             }
         });
     }

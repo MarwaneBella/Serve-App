@@ -85,7 +85,7 @@ public class EditListFragment extends Fragment {
         ArrayList<String> titles = new ArrayList<>();
         ArrayList<String> prices = new ArrayList<>();
         ArrayList<String> usernames = new ArrayList<>();
-        ArrayList<Integer> userImages = new ArrayList<>();
+        ArrayList<String> userImages = new ArrayList<>();
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference servicesRef = rootRef.child("Services").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -95,9 +95,20 @@ public class EditListFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 for(DataSnapshot snapshot :datasnapshot.getChildren()){
                     Service service = snapshot.getValue(Service.class);
+                    usernames.add(service.getUsername());
+                    userImages.add(service.getUimage());
                     titles.add(service.getTitleService());
                     prices.add(service.getPrice());
                 }
+
+                ListView listView = rootView.findViewById(R.id.list_item);
+                ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,titles,prices);
+                listView.setAdapter(Adapter);
+
+                listView.setOnItemClickListener((parent, view, position, id) -> {
+                    Intent intent = new Intent(getContext(), EditMyService.class);
+                    startActivity(intent);
+                });
 
             }
 
@@ -106,21 +117,10 @@ public class EditListFragment extends Fragment {
 
             }
         });
-        userImages.add(R.drawable.a);
-        usernames.add("marwane bella");
-        prices.add("30");
-        titles.add("pay");
 
         ///////////////
 
-        ListView listView = rootView.findViewById(R.id.list_item);
-        ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,titles,prices);
-        listView.setAdapter(Adapter);
 
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent = new Intent(getContext(), EditMyService.class);
-            startActivity(intent);
-        });
         return rootView;
     }
 }

@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -15,16 +17,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ListBaseAdapter extends BaseAdapter {
     Context context;
     ArrayList<String> usernames;
-    ArrayList<Integer> userImages;
-    ArrayList<String> descriptions;
+    ArrayList<String> userImages;
+    ArrayList<String> titles;
     ArrayList<String> prices;
     LayoutInflater inflater;
 
-    public ListBaseAdapter(Context ctx,ArrayList<String> usernames, ArrayList<Integer> userImages, ArrayList<String> descriptions, ArrayList<String> prices){
+    public ListBaseAdapter(Context ctx,ArrayList<String> usernames, ArrayList<String> userImages, ArrayList<String> titles, ArrayList<String> prices){
         this.context = ctx;
         this.usernames =usernames;
         this.userImages = userImages;
-        this.descriptions = descriptions;
+        this.titles = titles;
         this.prices = prices;
         this.inflater = LayoutInflater.from(ctx);
     }
@@ -49,11 +51,11 @@ public class ListBaseAdapter extends BaseAdapter {
         convertView = inflater.inflate(R.layout.list_view,null);
         TextView username = (TextView) convertView.findViewById(R.id.username);
         CircleImageView avatar = (CircleImageView) convertView.findViewById(R.id.avatar);
-        TextView description = (TextView) convertView.findViewById(R.id.description);
+        TextView title = (TextView) convertView.findViewById(R.id.description);
         TextView price = (TextView) convertView.findViewById(R.id.price);
         username.setText(usernames.get(position));
-        avatar.setImageResource(userImages.get(position));
-        description.setText(descriptions.get(position));
+        Glide.with(convertView.getContext()).load(userImages.get(position)).into(avatar);
+        title.setText(titles.get(position));
         price.setText(prices.get(position));
         return convertView;
     }

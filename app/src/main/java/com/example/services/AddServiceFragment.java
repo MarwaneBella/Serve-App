@@ -26,8 +26,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -78,12 +81,12 @@ public class AddServiceFragment extends Fragment {
         }
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View  rootView = inflater.inflate(R.layout.fragment_add_service, container, false);
+
         ///select category
         AutoCompleteTextView autoCompleteTxt;
         ArrayAdapter<String> adapterItems;
@@ -112,6 +115,7 @@ public class AddServiceFragment extends Fragment {
             String description = etDesc.getText().toString().trim();
             String phone = etPhone.getText().toString().trim();
 
+
             if(titleService.isEmpty()){
                 etTitle.setError("Title is required!");
                 etTitle.requestFocus();
@@ -138,22 +142,41 @@ public class AddServiceFragment extends Fragment {
                 return;
             }
 
-            Service service = new Service(category,titleService,location,price,description,phone);
-
-            DatabaseReference servicesRef = FirebaseDatabase.getInstance().getReference("Services");
-                    servicesRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(servicesRef.push().getKey())
-                    .setValue(service).addOnCompleteListener(new OnCompleteListener<Void>() {
+            DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(rootView.getContext(), "Successfully!",Toast.LENGTH_LONG).show();
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User user = snapshot.getValue(User.class);
 
-                    }
-                    else {
-                        Toast.makeText(rootView.getContext(), "Failed!",Toast.LENGTH_LONG).show();
-                    }
+                    String username = user.getUsername();
+                    String uimage = user.getUimage();
+
+                    Service service = new Service(username,uimage,category,titleService,location,price,description,phone);
+
+                    DatabaseReference servicesRef = FirebaseDatabase.getInstance().getReference("Services");
+                    servicesRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(servicesRef.push().getKey())
+                            .setValue(service).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(rootView.getContext(), "Successfully!",Toast.LENGTH_LONG).show();
+
+                            }
+                            else {
+                                Toast.makeText(rootView.getContext(), "Failed!",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
                 }
             });
+
+
+
         });
 
 

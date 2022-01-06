@@ -47,17 +47,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity {
     CircleImageView uimage;
-    EditText uname;
     Button btnupdate;
-
     DatabaseReference dbreference;
     StorageReference storageReference;
-
     Uri filepath;
     Bitmap bitmap;
     String UserID="";
     boolean check ;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,7 +187,6 @@ public class Profile extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()) {
                         if(snapshot.hasChild("uimage")) {
-
                             Glide.with(getApplicationContext()).load(snapshot.child("uimage").getValue().toString()).into(uimage);
                         }
                     }

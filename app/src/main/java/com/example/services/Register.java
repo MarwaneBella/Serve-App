@@ -61,6 +61,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     private void registerUser() {
 
         String username = etUsername.getText().toString().trim();
+        String uimage;
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
@@ -93,13 +94,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             etPassword.requestFocus();
             return;
         }
+        uimage ="https://firebasestorage.googleapis.com/v0/b/service-ca084.appspot.com/o/DefaultProfile.jpg?alt=media&token=34318ff5-b0a6-413c-879a-a225813634c9";
 
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(username,email,password,gender);
+                            User user = new User(username,uimage,email,password,gender);
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -41,7 +41,7 @@
                 android:background="@color/firstColor"
                 android:inputType="none"
                 android:textColor="@color/firstColor"
-                android:textSize="10dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 

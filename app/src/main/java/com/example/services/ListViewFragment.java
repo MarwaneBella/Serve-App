@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,6 +15,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,9 +85,113 @@ public class ListViewFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
 
-        //select bar
+        AutoCompleteTextView autoCompleteTxt;
+        ArrayAdapter<String> adapterItems;
 
+        String[] items =  getResources().getStringArray(R.array.category2);
+        autoCompleteTxt = rootView.findViewById(R.id.auto_complete_txt);
+        adapterItems = new ArrayAdapter<String>(rootView.getContext(),R.layout.list_item,items);
+        autoCompleteTxt.setAdapter(adapterItems);
+        /* <item>All</item>
+        <item>Delivery</item>
+        <item>Bill payment</item>
+        <item>Grocery shopping</item>
+        <item>Other</item>*/
+        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String> prices = new ArrayList<>();
+        ArrayList<String> usernames = new ArrayList<>();
+        ArrayList<String> userImages = new ArrayList<>();
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference servicesRef = rootRef.child("Services");
+        if(autoCompleteTxt.getText().toString().equals("All")){
+
+        }
+
+
+        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                if(item.equals("All")){
+                    servicesRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            for(DataSnapshot childSnapshot :datasnapshot.getChildren()){
+                                for(DataSnapshot snapshot :childSnapshot.getChildren()){
+                                    Service service = snapshot.getValue(Service.class);
+                                    usernames.add(service.getUsername());
+                                    userImages.add(service.getUimage());
+                                    titles.add(service.getTitleService());
+                                    prices.add(service.getPrice());
+                                }
+                            }
+
+                            ListView listView = rootView.findViewById(R.id.list_item);
+                            ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,titles,prices);
+                            listView.setAdapter(Adapter);
+
+                            listView.setOnItemClickListener((parent, view, position, id) -> {
+                                Intent intent = new Intent(getContext(), EditMyService.class);
+                                startActivity(intent);
+                            });
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
+
+                else{
+                    servicesRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            for(DataSnapshot childSnapshot :datasnapshot.getChildren()){
+                                for(DataSnapshot snapshot :childSnapshot.getChildren()){
+                                    Service service = snapshot.getValue(Service.class);
+                                    if(service.getCategory().equals(item)){
+                                        usernames.add(service.getUsername());
+                                        userImages.add(service.getUimage());
+                                        titles.add(service.getTitleService());
+                                        prices.add(service.getPrice());
+                                    }
+
+                                }
+                            }
+
+                            ListView listView = rootView.findViewById(R.id.list_item);
+                            ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,titles,prices);
+                            listView.setAdapter(Adapter);
+
+                            listView.setOnItemClickListener((parent, view, position, id) -> {
+                                Intent intent = new Intent(getContext(), EditMyService.class);
+                                startActivity(intent);
+                            });
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
+                usernames.clear();
+                userImages.clear();
+                titles.clear();
+                prices.clear();
+
+            }
+        });
 
         return rootView;
     }
+
+
 }

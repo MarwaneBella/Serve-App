@@ -72,11 +72,6 @@ public class ListViewFragment extends Fragment {
 
     }
 
-    private String usernames[]={"Marwane bella","Hamza Ezzaki","Robenson John","Bose Steven","Bradbury Mitchell","Bulter Boomer","Chesney Sarah"};
-    private int  userImages[]= {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e,R.drawable.f,R.drawable.g};
-    private String descriptions []= {"aaaaaaaaa","bbbbbbb","ccccccccccc","ddddddddd","eeeeeeeeee","ffffffffff","ggggggggg"};
-    private float prices[]={100,200,300,400,500.75F,600,700};
-    private ListView listView ;
 
 
     @Override
@@ -101,13 +96,9 @@ public class ListViewFragment extends Fragment {
         ArrayList<String> prices = new ArrayList<>();
         ArrayList<String> usernames = new ArrayList<>();
         ArrayList<String> userImages = new ArrayList<>();
-
+        ArrayList<String> keyServices =new ArrayList<>();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference servicesRef = rootRef.child("Services");
-        if(autoCompleteTxt.getText().toString().equals("All")){
-
-        }
-
 
         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -119,6 +110,7 @@ public class ListViewFragment extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                             for(DataSnapshot childSnapshot :datasnapshot.getChildren()){
                                 for(DataSnapshot snapshot :childSnapshot.getChildren()){
+                                    keyServices.add(snapshot.getKey());
                                     Service service = snapshot.getValue(Service.class);
                                     usernames.add(service.getUsername());
                                     userImages.add(service.getUimage());
@@ -132,7 +124,8 @@ public class ListViewFragment extends Fragment {
                             listView.setAdapter(Adapter);
 
                             listView.setOnItemClickListener((parent, view, position, id) -> {
-                                Intent intent = new Intent(getContext(), EditMyService.class);
+                                Intent intent = new Intent(getContext(), ServiceInfos.class);
+                                intent.putExtra("key",keyServices.get(position));
                                 startActivity(intent);
                             });
 
@@ -154,6 +147,7 @@ public class ListViewFragment extends Fragment {
                                 for(DataSnapshot snapshot :childSnapshot.getChildren()){
                                     Service service = snapshot.getValue(Service.class);
                                     if(service.getCategory().equals(item)){
+                                        keyServices.add(snapshot.getKey());
                                         usernames.add(service.getUsername());
                                         userImages.add(service.getUimage());
                                         titles.add(service.getTitleService());
@@ -168,7 +162,8 @@ public class ListViewFragment extends Fragment {
                             listView.setAdapter(Adapter);
 
                             listView.setOnItemClickListener((parent, view, position, id) -> {
-                                Intent intent = new Intent(getContext(), EditMyService.class);
+                                Intent intent = new Intent(getContext(), ServiceInfos.class);
+                                intent.putExtra("key",keyServices.get(position));
                                 startActivity(intent);
                             });
 
@@ -186,7 +181,7 @@ public class ListViewFragment extends Fragment {
                 userImages.clear();
                 titles.clear();
                 prices.clear();
-
+                keyServices.clear();
             }
         });
 

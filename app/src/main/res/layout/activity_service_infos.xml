@@ -36,7 +36,7 @@
 
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/tvUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -69,12 +69,12 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/tvCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="18sp"
-                    android:text="other"/>
+                    />
 
             </LinearLayout>
 
@@ -95,11 +95,12 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="18sp"
-                    android:text="other"/>
+                    />
 
             </LinearLayout>
             <LinearLayout
@@ -119,11 +120,12 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="18sp"
-                    android:text="other"/>
+                    />
 
             </LinearLayout>
             <LinearLayout
@@ -143,11 +145,12 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="18sp"
-                    android:text="other"/>
+                    />
 
             </LinearLayout>
 
@@ -166,6 +169,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -200,11 +204,12 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="18sp"
-                    android:text="+2126458651"/>
+                    />
 
             </LinearLayout>
 

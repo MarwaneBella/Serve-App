@@ -111,7 +111,7 @@ public class AddServiceFragment extends Fragment {
             String category = autoCompleteTxt.getText().toString().trim();
             String titleService = etTitle.getText().toString().trim();
             String location = etLocation.getText().toString().trim();
-            String price = etPrice.getText().toString().trim();
+            String price = "+212"+etPrice.getText().toString().trim();
             String description = etDesc.getText().toString().trim();
             String phone = etPhone.getText().toString().trim();
 

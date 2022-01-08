@@ -37,11 +37,12 @@
             <AutoCompleteTextView
                 android:id="@+id/auto_complete_txt"
                 android:layout_width="375dp"
-                android:layout_height="48dp"
+                android:layout_height="60dp"
                 android:background="@color/firstColor"
                 android:inputType="none"
                 android:textColor="@color/firstColor"
                 android:textSize="20sp"
+
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 

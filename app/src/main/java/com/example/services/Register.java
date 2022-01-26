@@ -94,7 +94,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             etPassword.requestFocus();
             return;
         }
-        uimage ="https://firebasestorage.googleapis.com/v0/b/service-ca084.appspot.com/o/DefaultProfile.jpg?alt=media&token=34318ff5-b0a6-413c-879a-a225813634c9";
+        uimage ="https://firebasestorage.googleapis.com/v0/b/service-ca084.appspot.com/o/DefaultProfile.jpg?alt=media&token=6c50752f-c143-4137-8891-90ac14952675";
 
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {

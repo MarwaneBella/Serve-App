@@ -148,15 +148,18 @@ public class Profile extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         if(snapshot.exists()) {
                                             if(snapshot.hasChild("uimage")){
-                                                FirebaseStorage.getInstance().getReferenceFromUrl(snapshot.child("uimage").getValue().toString()).delete();
+                                                Toast.makeText(Profile.this,FirebaseStorage.getInstance().getReferenceFromUrl(snapshot.child("uimage").getValue().toString()).toString(),Toast.LENGTH_SHORT).show();
+                                                if(!FirebaseStorage.getInstance().getReferenceFromUrl(snapshot.child("uimage").getValue().toString()).toString().equals("gs://service-ca084.appspot.com/DefaultProfile.jpg")){
+                                                    FirebaseStorage.getInstance().getReferenceFromUrl(snapshot.child("uimage").getValue().toString()).delete();
+                                                }
+
 
                                             }
                                             dbreference.child(UserID).updateChildren(map);
                                         }
                                     }
                                     @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-                                    }
+                                    public void onCancelled(@NonNull DatabaseError error) { }
                                 });
 
                                 pd.dismiss();

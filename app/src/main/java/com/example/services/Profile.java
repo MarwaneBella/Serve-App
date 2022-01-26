@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -47,6 +48,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity {
     CircleImageView uimage;
+    TextView username,email,gender;
     Button btnupdate;
     DatabaseReference dbreference;
     StorageReference storageReference;
@@ -148,7 +150,6 @@ public class Profile extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         if(snapshot.exists()) {
                                             if(snapshot.hasChild("uimage")){
-                                                Toast.makeText(Profile.this,FirebaseStorage.getInstance().getReferenceFromUrl(snapshot.child("uimage").getValue().toString()).toString(),Toast.LENGTH_SHORT).show();
                                                 if(!FirebaseStorage.getInstance().getReferenceFromUrl(snapshot.child("uimage").getValue().toString()).toString().equals("gs://service-ca084.appspot.com/DefaultProfile.jpg")){
                                                     FirebaseStorage.getInstance().getReferenceFromUrl(snapshot.child("uimage").getValue().toString()).delete();
                                                 }
@@ -184,14 +185,22 @@ public class Profile extends AppCompatActivity {
         super.onStart();
         if(check){
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            UserID=user.getUid();
+
+            UserID = user.getUid();
+            username =findViewById(R.id.username);
+            email = findViewById(R.id.email);
+            gender = findViewById(R.id.gender);
+
             dbreference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()) {
-                        if(snapshot.hasChild("uimage")) {
-                            Glide.with(getApplicationContext()).load(snapshot.child("uimage").getValue().toString()).into(uimage);
-                        }
+                        User data = snapshot.getValue(User.class);
+                        Glide.with(getApplicationContext()).load(data.getUimage()).into(uimage);
+                        username.setText(data.getUsername());
+                        email.setText(data.getEmail());
+                        gender.setText(data.getGender());
+
                     }
                 }
 

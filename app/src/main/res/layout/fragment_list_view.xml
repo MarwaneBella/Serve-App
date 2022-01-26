@@ -40,9 +40,9 @@
                 android:layout_height="60dp"
                 android:background="@color/firstColor"
                 android:inputType="none"
+                android:text="All"
                 android:textColor="@color/firstColor"
                 android:textSize="20sp"
-
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 

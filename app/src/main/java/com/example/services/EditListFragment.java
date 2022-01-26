@@ -86,6 +86,7 @@ public class EditListFragment extends Fragment {
         ArrayList<String> prices = new ArrayList<>();
         ArrayList<String> usernames = new ArrayList<>();
         ArrayList<String> userImages = new ArrayList<>();
+        ArrayList<String> keyServices =new ArrayList<>();
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference servicesRef = rootRef.child("Services").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -94,6 +95,7 @@ public class EditListFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 for(DataSnapshot snapshot :datasnapshot.getChildren()){
+                    keyServices.add(snapshot.getKey());
                     Service service = snapshot.getValue(Service.class);
                     usernames.add(service.getUsername());
                     userImages.add(service.getUimage());
@@ -107,6 +109,7 @@ public class EditListFragment extends Fragment {
 
                 listView.setOnItemClickListener((parent, view, position, id) -> {
                     Intent intent = new Intent(getContext(), EditMyService.class);
+                    intent.putExtra("key",keyServices.get(position));
                     startActivity(intent);
                 });
 

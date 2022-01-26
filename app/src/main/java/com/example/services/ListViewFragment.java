@@ -87,11 +87,7 @@ public class ListViewFragment extends Fragment {
         autoCompleteTxt = rootView.findViewById(R.id.auto_complete_txt);
         adapterItems = new ArrayAdapter<String>(rootView.getContext(),R.layout.list_item,items);
         autoCompleteTxt.setAdapter(adapterItems);
-        /* <item>All</item>
-        <item>Delivery</item>
-        <item>Bill payment</item>
-        <item>Grocery shopping</item>
-        <item>Other</item>*/
+
         ArrayList<String> titles = new ArrayList<>();
         ArrayList<String> prices = new ArrayList<>();
         ArrayList<String> usernames = new ArrayList<>();
@@ -100,11 +96,53 @@ public class ListViewFragment extends Fragment {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference servicesRef = rootRef.child("Services");
 
+        if(autoCompleteTxt.getText().toString().equals("All")){
+            servicesRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                    for(DataSnapshot childSnapshot :datasnapshot.getChildren()){
+                        for(DataSnapshot snapshot :childSnapshot.getChildren()){
+                            keyServices.add(snapshot.getKey());
+                            Service service = snapshot.getValue(Service.class);
+                            usernames.add(service.getUsername());
+                            userImages.add(service.getUimage());
+                            titles.add(service.getTitleService());
+                            prices.add(service.getPrice());
+                        }
+                    }
+
+                    ListView listView = rootView.findViewById(R.id.list_item);
+                    ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(),usernames,userImages,titles,prices);
+                    listView.setAdapter(Adapter);
+
+                    listView.setOnItemClickListener((parent, view, position, id) -> {
+                        Intent intent = new Intent(getContext(), ServiceInfos.class);
+                        intent.putExtra("key",keyServices.get(position));
+                        startActivity(intent);
+                    });
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }
+
         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
                 if(item.equals("All")){
+
+                    usernames.clear();
+                    userImages.clear();
+                    titles.clear();
+                    prices.clear();
+                    keyServices.clear();
+
                     servicesRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -120,7 +158,7 @@ public class ListViewFragment extends Fragment {
                             }
 
                             ListView listView = rootView.findViewById(R.id.list_item);
-                            ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,titles,prices);
+                            ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(),usernames,userImages,titles,prices);
                             listView.setAdapter(Adapter);
 
                             listView.setOnItemClickListener((parent, view, position, id) -> {
@@ -187,6 +225,7 @@ public class ListViewFragment extends Fragment {
 
         return rootView;
     }
+
 
 
 }

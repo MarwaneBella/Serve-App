@@ -17,6 +17,15 @@ public class Service {
         this.phone = phone;
     }
 
+    public Service(String category, String titleService, String location, String price, String description, String phone) {
+        this.category = category;
+        this.titleService = titleService;
+        this.location = location;
+        this.price = price;
+        this.description = description;
+        this.phone = phone;
+    }
+
     public String getUsername() {
         return username;
     }

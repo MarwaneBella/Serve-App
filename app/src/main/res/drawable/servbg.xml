@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <svg width="491" height="903" viewBox="0 0 491 903" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_136_7)" filter="url(#filter0_d_136_7)">
+            <rect width="411" height="823" transform="translate(30 30)" fill="white"/>
+            <path d="M74.5701 -119.381C76.5031 -122.729 80.7842 -123.876 84.1322 -121.943L621.421 188.261C624.77 190.194 625.917 194.475 623.984 197.823L450.354 498.559C448.133 502.405 442.238 500.114 443.198 495.777V495.777C466.708 389.604 377.415 292.418 269.635 306.871L158.257 321.806V321.806C57.5534 329.707 -40.7303 288.29 -105.407 210.698L-111.286 203.646C-111.514 203.372 -111.548 202.984 -111.369 202.675L74.5701 -119.381Z" fill="#0D524F" fill-opacity="0.5"/>
+            <path d="M-90 -70C-90 -73.866 -86.866 -77 -83 -77H466C469.866 -77 473 -73.866 473 -70V230.068C473 233.99 467.491 234.858 466.285 231.126V231.126C436.994 140.474 327.095 105.709 250.997 163.023L170.082 223.966V223.966C96.0062 273.664 2.72268 285.204 -81.2304 255.057L-89.4898 252.091C-89.7959 251.981 -90 251.691 -90 251.365V-70Z" fill="#093545"/>
+            <path d="M488.047 1035.5C487.769 1039.36 484.418 1042.26 480.562 1041.98L-67.0181 1002.52C-70.8741 1002.24 -73.7748 998.891 -73.4969 995.035L-51.9302 695.743C-51.6484 691.832 -46.0912 691.362 -45.1568 695.171V695.171C-22.457 787.694 84.6595 830.268 164.68 778.571L249.766 723.601V723.601C327.222 679.356 421.094 674.55 502.663 710.653L510.688 714.205C510.985 714.337 511.168 714.641 511.144 714.965L488.047 1035.5Z" fill="#093545"/>
+        </g>
+        <defs>
+            <filter id="filter0_d_136_7" x="0" y="0" width="491" height="903" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dx="10" dy="10"/>
+                <feGaussianBlur stdDeviation="20"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_136_7"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_136_7" result="shape"/>
+            </filter>
+            <clipPath id="clip0_136_7">
+                <rect width="411" height="823" fill="white" transform="translate(30 30)"/>
+            </clipPath>
+        </defs>
+    </svg>
+
+</shape>

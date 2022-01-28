@@ -8,8 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="specialColor">#1E91E9</color>
-    <color name="secondColor">#C1C6F4</color>
-    <color name="firstColor">#130f40</color>
+    <color name="secondColor">#EFEBD8</color>
+    <color name="firstColor">#211F1F</color>
+    <color name="shineColor">#8AC5A8</color>
 
     <color name="textHintColor">#6B6C73</color>
 </resources>

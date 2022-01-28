@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/finalservice"
-            app:tint="@color/secondColor" />
+            app:tint="@color/shineColor" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgProfile"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_navigation"
         app:mbn_circleColor="@color/firstColor"
-        app:mbn_selectedIconColor="@color/secondColor"
+        app:mbn_selectedIconColor="@color/shineColor"
         app:mbn_defaultIconColor="@color/secondColor"
         app:mbn_backgroundBottomColor="@color/firstColor"
         app:mbn_shadowColor="@color/firstColor"

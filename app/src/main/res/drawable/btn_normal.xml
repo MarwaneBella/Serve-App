@@ -18,8 +18,8 @@
 
     <!--Fill Color of the Button-->
     <gradient android:angle="180"
-        android:startColor="#093545"
-        android:endColor="#093545"
+        android:startColor="#211F1F"
+        android:endColor="#211F1F"
         />
 
 </shape>

@@ -21,14 +21,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.048"
         app:srcCompat="@drawable/finalservice"
-        app:tint="@color/secondColor" />
+        app:tint="@color/shineColor" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="267dp"
         android:layout_height="50dp"
         android:layout_marginTop="108dp"
-        android:background="#20093545"
+        android:background="#5020DF7F"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="0dp"
         android:ems="13"
@@ -50,7 +50,7 @@
         android:layout_width="267dp"
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
-        android:background="#20093545"
+        android:background="#5020DF7F"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="0dp"
         android:ems="13"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/textCreateAcc"
-        android:textColor="@color/specialColor"
+        android:textColor="@color/shineColor"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,7 +97,7 @@
         app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLog"
-        app:layout_constraintVertical_bias="0.738" />
+        app:layout_constraintVertical_bias="0.78" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

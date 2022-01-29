@@ -20,6 +20,7 @@
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="My Services"
+
             android:textSize="40sp"
             android:textStyle="bold|italic" />
 

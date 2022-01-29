@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/secondColor"
+    android:background="#FFFFFF"
     tools:context=".MainActivity"
     >
 
@@ -59,7 +59,7 @@
         android:id="@+id/button_navigation"
         app:mbn_circleColor="@color/firstColor"
         app:mbn_selectedIconColor="@color/shineColor"
-        app:mbn_defaultIconColor="@color/secondColor"
+        app:mbn_defaultIconColor="#FFFFFF"
         app:mbn_backgroundBottomColor="@color/firstColor"
         app:mbn_shadowColor="@color/firstColor"
         />

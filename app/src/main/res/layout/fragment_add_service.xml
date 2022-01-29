@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="@color/secondColor">
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textView14"
@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
+
                 android:textSize="40sp"
                 android:textStyle="bold|italic"
                 android:text="Post Service" />
@@ -38,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
+
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 >
@@ -66,15 +68,20 @@
                 android:hint="Title of service"
 
 
+
                 >
+
                 <EditText
+                    android:id="@+id/etTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/etTitle"
-                    android:textSize="20sp"
-                    android:imeOptions="actionNext"
+                     android:imeOptions="actionNext"
                     android:inputType="text"
-                    />
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textColorLink="#FFFFFF"
+                    android:textSize="20sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,14 +98,15 @@
                 >
 
                 <EditText
+                    android:id="@+id/etLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/etLocation"
-                    android:hint="Location"
-                    android:textSize="20sp"
+                     android:hint="Location"
                     android:imeOptions="actionNext"
                     android:inputType="text"
-                    />
+                    android:textColor="#CCCCCC"
+                    android:textColorHint="@color/white"
+                    android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -121,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/etPhone"
-                    android:hint="Phone Number"
+                     android:hint="Phone Number"
                     android:textSize="20sp"
                     android:maxLength="10"
                     android:imeOptions="actionNext"
@@ -148,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/etPrice"
                     android:hint="Price"
-                    android:textSize="20sp"
+                     android:textSize="20sp"
                     android:maxLength="10"
                     android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
@@ -174,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/etDesc"
                     android:hint="Description"
-                    android:textSize="20sp"
+                     android:textSize="20sp"
                     android:imeOptions="actionNext"
                     android:lines="20"
                     android:gravity="top"

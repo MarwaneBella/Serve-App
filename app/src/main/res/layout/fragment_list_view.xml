@@ -15,29 +15,28 @@
         android:background="@color/white">
 
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_marginStart="10dp"
-            android:padding="3dp"
-            android:layout_marginEnd="9dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:hint="@string/select"
+            android:padding="3dp"
             android:textColorHint="@color/firstColor"
             app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeWidth="1.5dp"
-            >
+            app:boxStrokeWidth="1.5dp">
 
             <AutoCompleteTextView
                 android:id="@+id/auto_complete_txt"
-                android:layout_width="375dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@color/firstColor"
                 android:inputType="none"
                 android:text="All"

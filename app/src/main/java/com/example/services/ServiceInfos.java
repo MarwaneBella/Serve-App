@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +42,7 @@ public class ServiceInfos extends AppCompatActivity {
         Intent i = getIntent();
         String key = i.getStringExtra("key");
 
+
         avatar = findViewById(R.id.avatar);
         tvUsername = findViewById(R.id.tvUsername);
         tvCategory = findViewById(R.id.tvCategory);
@@ -50,15 +52,17 @@ public class ServiceInfos extends AppCompatActivity {
         tvDescription = findViewById(R.id.tvDescription);
         tvPhone = findViewById(R.id.tvPhone);
 
+
         DatabaseReference keyServiceRef = FirebaseDatabase.getInstance().getReference().child("Services");
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
         keyServiceRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 for(DataSnapshot childSnapshot :datasnapshot.getChildren()){
+                    String id = childSnapshot.getKey();
                     for(DataSnapshot snapshot :childSnapshot.getChildren()){
                         if(snapshot.getKey().equals(key)){
-                            usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            usersRef.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     User user = snapshot.getValue(User.class);

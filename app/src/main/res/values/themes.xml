@@ -5,7 +5,7 @@
 
     <style name="Theme.materialComponents" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#6152FF</item>
+        <item name="colorPrimary">#F94646</item>
         <item name="colorPrimaryVariant">#424242</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

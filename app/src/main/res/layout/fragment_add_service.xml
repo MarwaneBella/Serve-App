@@ -66,7 +66,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="Title of service"
-
+                android:textColorHint="@color/white"
 
 
                 >
@@ -81,6 +81,7 @@
                     android:textColorHighlight="#FFFFFF"
                     android:textColorHint="#FFFFFF"
                     android:textColorLink="#FFFFFF"
+
                     android:textSize="20sp" />
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -172,7 +172,9 @@ public class EditMyService extends AppCompatActivity {
                     }
                 });
 
-                startActivity( new Intent(EditMyService.this , MainActivity.class));
+                Intent in = new Intent(EditMyService.this,MainActivity.class);
+                in.putExtra("id","2");
+                startActivity(in);
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -185,6 +187,7 @@ public class EditMyService extends AppCompatActivity {
 
 
     }
+
 
     @Override
     protected void onStart() {

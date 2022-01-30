@@ -72,9 +72,12 @@ public class ListViewFragment extends Fragment {
         }
 
     }
-    String UserID;
+
     DatabaseReference servicesRef;
     DatabaseReference usersRef ;
+    ListView listView;
+    ListBaseAdapter Adapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,10 +98,10 @@ public class ListViewFragment extends Fragment {
         ArrayList<String> usernames = new ArrayList<>();
         ArrayList<String> userImages = new ArrayList<>();
         ArrayList<String> keyServices =new ArrayList<>();
+        ArrayList<String> id =new ArrayList<>();
 
         servicesRef = FirebaseDatabase.getInstance().getReference().child("Services");
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users");
-
 
 
         if(autoCompleteTxt.getText().toString().equals("All")) {
@@ -111,7 +114,7 @@ public class ListViewFragment extends Fragment {
 
                         for (DataSnapshot snapshot : childSnapshot.getChildren()) {
 
-                            UserID = childSnapshot.getKey();
+                            String UserID = childSnapshot.getKey();
 
                             usersRef.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -125,7 +128,6 @@ public class ListViewFragment extends Fragment {
                                     Service service = snapshot.getValue(Service.class);
                                     titles.add(service.getTitleService());
                                     prices.add(service.getPrice());
-
 
                                     ListView listView = rootView.findViewById(R.id.list_item);
                                     ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
@@ -144,8 +146,10 @@ public class ListViewFragment extends Fragment {
                                 }
                             });
 
+
                         }
                     }
+
                 }
 
                 @Override
@@ -158,55 +162,63 @@ public class ListViewFragment extends Fragment {
 
 
 
-            usernames.clear();
-            userImages.clear();
-            titles.clear();
-            prices.clear();
-            keyServices.clear();
+
+
 
         }
+
 
         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
+                usernames.clear();
+                userImages.clear();
+                titles.clear();
+                prices.clear();
+                keyServices.clear();
+
+
+
+
+                try {
+                    listView.setAdapter(null);
+                }catch (Exception e){}
+
                 if(item.equals("All")){
 
-                    usernames.clear();
-                    userImages.clear();
-                    titles.clear();
-                    prices.clear();
-                    keyServices.clear();
+
 
                     servicesRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                             for(DataSnapshot childSnapshot :datasnapshot.getChildren()){
                                 for(DataSnapshot snapshot :childSnapshot.getChildren()){
-                                    UserID = childSnapshot.getKey();
+                                    String UserID = childSnapshot.getKey();
 
-                                    usersRef.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
+
+                                    usersRef.child(UserID).addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot s) {
                                             User user = s.getValue(User.class);
                                             usernames.add(user.getUsername());
                                             userImages.add(user.getUimage());
-
-
                                             keyServices.add(snapshot.getKey());
                                             Service service = snapshot.getValue(Service.class);
                                             titles.add(service.getTitleService());
                                             prices.add(service.getPrice());
 
 
-                                            ListView listView = rootView.findViewById(R.id.list_item);
-                                            ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
+                                            listView = rootView.findViewById(R.id.list_item);
+                                            Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
                                             listView.setAdapter(Adapter);
                                             listView.setOnItemClickListener((parent, view, position, id) -> {
+                                                Toast.makeText(getContext(), keyServices.get(position), Toast.LENGTH_SHORT).show();
                                                 Intent intent = new Intent(getContext(), ServiceInfos.class);
                                                 intent.putExtra("key", keyServices.get(position));
                                                 startActivity(intent);
                                             });
+
 
                                         }
 
@@ -219,6 +231,8 @@ public class ListViewFragment extends Fragment {
                             }
 
 
+
+
                         }
 
                         @Override
@@ -227,9 +241,12 @@ public class ListViewFragment extends Fragment {
                         }
                     });
 
+
+
                 }
 
                 else{
+
                     servicesRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -238,7 +255,7 @@ public class ListViewFragment extends Fragment {
                                     Service service = snapshot.getValue(Service.class);
                                     if(service.getCategory().equals(item)){
 
-                                        UserID = childSnapshot.getKey();
+                                        String UserID = childSnapshot.getKey();
 
                                         usersRef.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
@@ -253,7 +270,6 @@ public class ListViewFragment extends Fragment {
                                                 titles.add(service.getTitleService());
                                                 prices.add(service.getPrice());
 
-
                                                 ListView listView = rootView.findViewById(R.id.list_item);
                                                 ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
                                                 listView.setAdapter(Adapter);
@@ -262,6 +278,7 @@ public class ListViewFragment extends Fragment {
                                                     intent.putExtra("key", keyServices.get(position));
                                                     startActivity(intent);
                                                 });
+
 
                                             }
 
@@ -275,15 +292,7 @@ public class ListViewFragment extends Fragment {
                                 }
                             }
 
-                            ListView listView = rootView.findViewById(R.id.list_item);
-                            ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,titles,prices);
-                            listView.setAdapter(Adapter);
 
-                            listView.setOnItemClickListener((parent, view, position, id) -> {
-                                Intent intent = new Intent(getContext(), ServiceInfos.class);
-                                intent.putExtra("key",keyServices.get(position));
-                                startActivity(intent);
-                            });
 
 
                         }
@@ -295,16 +304,16 @@ public class ListViewFragment extends Fragment {
                     });
 
                 }
-                usernames.clear();
-                userImages.clear();
-                titles.clear();
-                prices.clear();
-                keyServices.clear();
+
             }
         });
 
         return rootView;
     }
+
+
+
+
 
 
 }

@@ -18,7 +18,7 @@
             android:exported="false" />
         <activity
             android:name=".EditMyService"
-            android:exported="false" />
+            android:exported="false" android:configChanges="keyboardHidden|orientation" />
         <activity
             android:name=".ServiceInfos"
             android:exported="false" />
@@ -31,7 +31,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".Register"
             android:exported="false" />

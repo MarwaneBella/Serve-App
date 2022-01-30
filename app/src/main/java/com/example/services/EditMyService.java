@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +33,7 @@ public class EditMyService extends AppCompatActivity {
     Button save,delete;
     String key;
     String userId;
+    DatabaseReference servicesRef;
 
 
     @Override
@@ -72,11 +74,13 @@ public class EditMyService extends AppCompatActivity {
         delete = findViewById(R.id.btnDelete);
 
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        servicesRef = FirebaseDatabase.getInstance().getReference("Services");
 
 
 
-        //show data
-        showData();
+
+
+
 
         ///send data
         save.setOnClickListener(v-> {
@@ -118,33 +122,76 @@ public class EditMyService extends AppCompatActivity {
 
             Service service = new Service(category,titleService,location,price,description,phone);
 
-            DatabaseReference servicesRef = FirebaseDatabase.getInstance().getReference("Services");
-            servicesRef.child(userId).child(key)
-                    .setValue(service).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(EditMyService.this, "Successfully!",Toast.LENGTH_LONG).show();
-                        showData();
+            try {
+                servicesRef.child(userId).child(key)
+                        .setValue(service).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(EditMyService.this, "Successfully!",Toast.LENGTH_SHORT).show();
+                            showData();
+                        }
+                        else {
+                            Toast.makeText(EditMyService.this, "Failed!",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
-                    }
-                    else {
-                        Toast.makeText(EditMyService.this, "Failed!",Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
 
         });
 
 
         delete.setOnClickListener(v -> {
 
+            try {
+
+
+                servicesRef.child(userId).child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+
+                            Toast.makeText(EditMyService.this, "Successfully!",Toast.LENGTH_SHORT).show();
+
+                        }
+                        else {
+                            Toast.makeText(EditMyService.this, "Failed!",Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+
+                startActivity( new Intent(EditMyService.this , MainActivity.class));
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
         });
+
+
+
+
     }
 
-
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //show data
+        showData();
+    }
 
     public void showData(){
         DatabaseReference keyServiceRef = FirebaseDatabase.getInstance().getReference().child("Services").child(userId).child(key);
@@ -153,6 +200,7 @@ public class EditMyService extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Service service = snapshot.getValue(Service.class);
                 autoCompleteTxt.setText(service.getCategory());
+                adapterItems.getFilter().filter(null);
                 etTitle.setText(service.getTitleService());
                 etLocation.setText(service.getLocation());
                 etPrice.setText(service.getPrice());

@@ -90,28 +90,46 @@ public class EditListFragment extends Fragment {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference servicesRef = rootRef.child("Services").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         servicesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 for(DataSnapshot snapshot :datasnapshot.getChildren()){
-                    keyServices.add(snapshot.getKey());
-                    Service service = snapshot.getValue(Service.class);
-                    usernames.add(service.getUsername());
-                    userImages.add(service.getUimage());
-                    titles.add(service.getTitleService());
-                    prices.add(service.getPrice());
+
+
+                    usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot s) {
+                            User user = s.getValue(User.class);
+                            usernames.add(user.getUsername());
+                            userImages.add(user.getUimage());
+
+
+                            keyServices.add(snapshot.getKey());
+                            Service service = snapshot.getValue(Service.class);
+                            titles.add(service.getTitleService());
+                            prices.add(service.getPrice());
+
+
+                            ListView listView = rootView.findViewById(R.id.list_item);
+                            ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
+                            listView.setAdapter(Adapter);
+                            listView.setOnItemClickListener((parent, view, position, id) -> {
+                                Intent intent = new Intent(getContext(), EditMyService.class);
+                                intent.putExtra("key", keyServices.get(position));
+                                startActivity(intent);
+                            });
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
 
-                ListView listView = rootView.findViewById(R.id.list_item);
-                ListBaseAdapter Adapter = new ListBaseAdapter(getContext(),usernames,userImages,titles,prices);
-                listView.setAdapter(Adapter);
-
-                listView.setOnItemClickListener((parent, view, position, id) -> {
-                    Intent intent = new Intent(getContext(), EditMyService.class);
-                    intent.putExtra("key",keyServices.get(position));
-                    startActivity(intent);
-                });
 
             }
 

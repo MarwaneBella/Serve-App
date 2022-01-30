@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,21 +51,33 @@ public class ServiceInfos extends AppCompatActivity {
         tvPhone = findViewById(R.id.tvPhone);
 
         DatabaseReference keyServiceRef = FirebaseDatabase.getInstance().getReference().child("Services");
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         keyServiceRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 for(DataSnapshot childSnapshot :datasnapshot.getChildren()){
                     for(DataSnapshot snapshot :childSnapshot.getChildren()){
                         if(snapshot.getKey().equals(key)){
+                            usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    User user = snapshot.getValue(User.class);
+                                    Glide.with(getApplicationContext()).load(user.getUimage()).into(avatar);
+                                    tvUsername.setText(user.getUsername());
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                             Service service = snapshot.getValue(Service.class);
-                            Glide.with(getApplicationContext()).load(service.getUimage()).into(avatar);
-                            tvUsername.setText(service.getUsername());
                             tvCategory.setText(service.getCategory());
                             tvTitle.setText(service.getTitleService());
                             tvLocation.setText(service.getLocation());
                             tvPrice.setText(service.getPrice());
                             tvDescription.setText(service.getDescription());
-                            tvPhone.setText(service.getPhone());
+                            tvPhone.setText("+212"+service.getPhone());
                             return;
                         }
 

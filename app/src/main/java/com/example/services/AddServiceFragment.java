@@ -113,7 +113,7 @@ public class AddServiceFragment extends Fragment {
             String location = etLocation.getText().toString().trim();
             String price = etPrice.getText().toString().trim();
             String description = etDesc.getText().toString().trim();
-            String phone = "+212"+etPhone.getText().toString().trim();
+            String phone = etPhone.getText().toString().trim();
 
 
             if(titleService.isEmpty()){
@@ -142,47 +142,29 @@ public class AddServiceFragment extends Fragment {
                 return;
             }
 
-            DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-            usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    User user = snapshot.getValue(User.class);
 
-                    String username = user.getUsername();
-                    String uimage = user.getUimage();
+            try {
+                Service service = new Service(category,titleService,location,price,description,phone);
 
-                    Service service = new Service(username,uimage,category,titleService,location,price,description,phone);
+                DatabaseReference servicesRef = FirebaseDatabase.getInstance().getReference("Services");
+                servicesRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(servicesRef.push().getKey())
+                        .setValue(service).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
 
-
-                    DatabaseReference servicesRef = FirebaseDatabase.getInstance().getReference("Services");
-                    servicesRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(servicesRef.push().getKey())
-                            .setValue(service).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-
-                                Toast.makeText(rootView.getContext(), "Successfully!",Toast.LENGTH_LONG).show();
-
-                                autoCompleteTxt.setText("Delivery");
-                                etTitle.getText().clear();
-                                etLocation.getText().clear();
-                                etPrice.getText().clear();
-                                etDesc.getText().clear();
-                                etPhone.getText().clear();
-
-                            }
-                            else {
-                                Toast.makeText(rootView.getContext(), "Failed!",Toast.LENGTH_LONG).show();
-                            }
+                            Toast.makeText(rootView.getContext(), "Successfully!",Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                        else {
+                            Toast.makeText(rootView.getContext(), "Failed!",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
-                }
-            });
 
 
 

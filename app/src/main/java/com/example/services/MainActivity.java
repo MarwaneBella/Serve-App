@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -42,12 +43,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
 
+
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
             public void onShowItem(MeowBottomNavigation.Model item) {
                 Fragment fragment=null;
 
                 switch (item.getId()){
+
                     case 1:
                         fragment = new ListViewFragment();
                         break;
@@ -58,7 +61,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         fragment = new AddServiceFragment();
                         break;
                 }
+
                 loadFragment(fragment);
+
             }
         });
 
@@ -80,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
             public void onClickItem(MeowBottomNavigation.Model item) {
-
                 idFragment =item.getId();
             }
         });
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     private void loadFragment(Fragment fragment) {
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout,fragment)

@@ -1,21 +1,11 @@
 package com.example.services;
 
 public class Service {
-    private String username,uimage,category,titleService,location,price,description,phone;
+    private String category,titleService,location,price,description,phone;
 
     public Service() {
     }
 
-    public Service(String username, String uimage, String category, String titleService, String location, String price, String description, String phone) {
-        this.username = username;
-        this.uimage = uimage;
-        this.category = category;
-        this.titleService = titleService;
-        this.location = location;
-        this.price = price;
-        this.description = description;
-        this.phone = phone;
-    }
 
     public Service(String category, String titleService, String location, String price, String description, String phone) {
         this.category = category;
@@ -24,22 +14,6 @@ public class Service {
         this.price = price;
         this.description = description;
         this.phone = phone;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUimage() {
-        return uimage;
-    }
-
-    public void setUimage(String uimage) {
-        this.uimage = uimage;
     }
 
     public String getCategory() {

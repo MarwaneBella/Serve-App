@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +64,14 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         check =true;
         uimage = findViewById(R.id.imgProfile);
+
+        ImageButton imageButton = findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Profile.this, MainActivity.class);
+            intent.putExtra("id",1+"");
+            this.startActivity(intent);
+
+        });
 
         btnupdate = findViewById(R.id.uploadBtn);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();

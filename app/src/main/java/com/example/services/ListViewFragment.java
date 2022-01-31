@@ -162,9 +162,6 @@ public class ListViewFragment extends Fragment {
 
 
 
-
-
-
         }
 
 
@@ -172,21 +169,20 @@ public class ListViewFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
-                usernames.clear();
-                userImages.clear();
-                titles.clear();
-                prices.clear();
-                keyServices.clear();
 
 
 
 
                 try {
+                    usernames.clear();
+                    userImages.clear();
+                    titles.clear();
+                    prices.clear();
+                    keyServices.clear();
                     listView.setAdapter(null);
                 }catch (Exception e){}
 
                 if(item.equals("All")){
-
 
 
                     servicesRef.addValueEventListener(new ValueEventListener() {
@@ -247,46 +243,50 @@ public class ListViewFragment extends Fragment {
 
                 else{
 
+
                     servicesRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                             for(DataSnapshot childSnapshot :datasnapshot.getChildren()){
                                 for(DataSnapshot snapshot :childSnapshot.getChildren()){
-                                    Service service = snapshot.getValue(Service.class);
-                                    if(service.getCategory().equals(item)){
+                                    if (snapshot.exists()) {
+                                        Service service = snapshot.getValue(Service.class);
+                                        if (service.getCategory().equals(item)) {
 
-                                        String UserID = childSnapshot.getKey();
+                                            String UserID = childSnapshot.getKey();
 
-                                        usersRef.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot s) {
-                                                User user = s.getValue(User.class);
-                                                usernames.add(user.getUsername());
-                                                userImages.add(user.getUimage());
-
-
-                                                keyServices.add(snapshot.getKey());
-                                                Service service = snapshot.getValue(Service.class);
-                                                titles.add(service.getTitleService());
-                                                prices.add(service.getPrice()+" DH");
-
-                                                ListView listView = rootView.findViewById(R.id.list_item);
-                                                ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
-                                                listView.setAdapter(Adapter);
-                                                listView.setOnItemClickListener((parent, view, position, id) -> {
-                                                    Intent intent = new Intent(getContext(), ServiceInfos.class);
-                                                    intent.putExtra("key", keyServices.get(position));
-                                                    startActivity(intent);
-                                                });
+                                            usersRef.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot s) {
+                                                    User user = s.getValue(User.class);
+                                                    usernames.add(user.getUsername());
+                                                    userImages.add(user.getUimage());
 
 
-                                            }
+                                                    keyServices.add(snapshot.getKey());
+                                                    Service service = snapshot.getValue(Service.class);
+                                                    titles.add(service.getTitleService());
+                                                    prices.add(service.getPrice() + " DH");
 
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
+                                                    ListView listView = rootView.findViewById(R.id.list_item);
+                                                    ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
+                                                    listView.setAdapter(Adapter);
+                                                    listView.setOnItemClickListener((parent, view, position, id) -> {
+                                                        Intent intent = new Intent(getContext(), ServiceInfos.class);
+                                                        intent.putExtra("key", keyServices.get(position));
+                                                        startActivity(intent);
+                                                    });
 
-                                            }
-                                        });
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
+                                        }
+
                                     }
 
                                 }

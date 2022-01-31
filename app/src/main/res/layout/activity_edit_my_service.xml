@@ -14,35 +14,53 @@
         android:gravity="center"
         android:background="@color/white">
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:textSize="40sp"
-            android:textStyle="bold|italic"
-            android:text="Edit my Service" />
 
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="107dp"
+            android:layout_height="45dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/serbg_selector2"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:hint="@string/select"
+            android:textColorHint="@color/shineColor"
+
+            app:endIconTint="@color/shineColor"
+            app:startIconTint="@color/shineColor"
+            android:background="@drawable/select_bg"
+            app:hintTextAppearance="@style/TextLabel"
+            app:boxBackgroundColor="@color/firstColor"
+            android:padding="2dp"
+
+
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+
             >
 
             <AutoCompleteTextView
                 android:id="@+id/auto_complete_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/secondColor"
                 android:textSize="20sp"
+                android:paddingTop="35dp"
+                android:paddingLeft="20dp"
+
                 android:inputType="none"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -50,6 +68,16 @@
             android:id="@+id/tilService"
             app:endIconMode="clear_text"
             app:startIconDrawable="@drawable/ic__title"
+            app:endIconTint="@color/shineColor"
+            app:startIconTint="@color/shineColor"
+            android:background="@drawable/select_bg"
+            app:hintTextAppearance="@style/TextLabel"
+            app:boxBackgroundColor="@color/firstColor"
+            android:textColorHint="@color/white"
+            android:paddingHorizontal="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="2dp"
+
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
@@ -58,13 +86,16 @@
 
 
             >
+
             <EditText
+                android:id="@+id/etTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/etTitle"
-                android:textSize="20sp"
                 android:imeOptions="actionNext"
                 android:inputType="text"
+                android:textColor="@color/secondColor"
+                android:textColorHint="@color/white"
+                android:textSize="20sp"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -74,7 +105,22 @@
             android:layout_height="wrap_content"
             android:id="@+id/tilLocation"
             app:endIconMode="clear_text"
+            app:endIconTint="@color/shineColor"
+            app:startIconTint="@color/shineColor"
+            android:background="@drawable/select_bg"
+            app:hintTextAppearance="@style/TextLabel"
+            app:boxBackgroundColor="@color/firstColor"
+
+            android:paddingHorizontal="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="2dp"
+
+            android:textColorHint="@color/white"
             app:startIconDrawable="@drawable/ic_location"
+            android:hint="Location"
+
+
+
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
@@ -82,14 +128,16 @@
             >
 
             <EditText
+                android:id="@+id/etLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/etLocation"
-                android:hint="Location"
-                android:textSize="20sp"
+
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                />
+                android:textColor="#C6C6C6"
+
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -98,8 +146,20 @@
             android:id="@+id/tilPhone"
             app:prefixText="+212"
             app:prefixTextAppearance="@style/prefix"
+            app:prefixTextColor="#C6C6C6"
             app:counterEnabled="true"
-            app:counterMaxLength="10"
+            app:counterMaxLength="9"
+            app:counterTextColor="@color/shineColor"
+            app:endIconTint="@color/shineColor"
+            app:startIconTint="@color/shineColor"
+            android:background="@drawable/select_bg"
+            app:hintTextAppearance="@style/TextLabel"
+            app:boxBackgroundColor="@color/firstColor"
+
+
+            android:paddingHorizontal="5dp"
+            android:paddingTop="2dp"
+            android:textColorHint="@color/white"
             app:endIconMode="clear_text"
             app:startIconDrawable="@drawable/ic_phone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -107,6 +167,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:gravity="center"
+
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -114,7 +175,8 @@
                 android:id="@+id/etPhone"
                 android:hint="Phone Number"
                 android:textSize="20sp"
-                android:maxLength="10"
+                android:textColor="#C6C6C6"
+                android:maxLength="9"
                 android:imeOptions="actionNext"
                 android:inputType="number"
 
@@ -128,11 +190,21 @@
             app:counterEnabled="true"
             app:counterMaxLength="10"
             app:suffixText="DH"
+            app:suffixTextColor="@color/shineColor"
             app:startIconDrawable="@drawable/ic__money"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            app:counterTextColor="@color/shineColor"
+            app:endIconTint="@color/shineColor"
+            app:startIconTint="@color/shineColor"
+            android:background="@drawable/select_bg"
+            app:hintTextAppearance="@style/TextLabel"
+            app:boxBackgroundColor="@color/firstColor"
+            android:paddingHorizontal="5dp"
+            android:paddingTop="2dp"
+            android:textColorHint="@color/white"
             >
             <EditText
                 android:layout_width="match_parent"
@@ -140,6 +212,7 @@
                 android:id="@+id/etPrice"
                 android:hint="Price"
                 android:textSize="20sp"
+                android:textColor="#C6C6C6"
                 android:maxLength="10"
                 android:imeOptions="actionNext"
                 android:inputType="numberDecimal"
@@ -159,6 +232,15 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            app:counterTextColor="@color/shineColor"
+            app:endIconTint="@color/shineColor"
+            app:startIconTint="@color/shineColor"
+            android:background="@drawable/select_bg"
+            app:hintTextAppearance="@style/TextLabel"
+            app:boxBackgroundColor="@color/firstColor"
+            android:paddingHorizontal="5dp"
+            android:paddingTop="2dp"
+            android:textColorHint="@color/white"
             >
             <EditText
                 android:layout_width="match_parent"
@@ -166,11 +248,13 @@
                 android:id="@+id/etDesc"
                 android:hint="Description"
                 android:textSize="20sp"
+                android:textColor="#C6C6C6"
                 android:imeOptions="actionNext"
                 android:lines="20"
                 android:gravity="top"
                 android:maxLength="650"
                 android:inputType="textMultiLine"
+
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -190,6 +274,8 @@
                 android:layout_weight="1"
                 android:text="save"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/serbg_selector2"
+                android:textColor="@color/white"
                 android:textSize="25sp" />
 
             <android.widget.Button
@@ -199,6 +285,8 @@
                 android:layout_weight="1"
                 android:textSize="25sp"
                 android:layout_marginLeft="10dp"
+                android:background="@drawable/serbg_selector2"
+                android:textColor="@color/white"
                 android:text="Delete" />
         </LinearLayout>
 

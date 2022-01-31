@@ -24,7 +24,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
 
-            app:civ_border_color="@color/secondColor"
+            app:civ_border_color="@color/shineColor"
             app:civ_border_width="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +81,7 @@
             android:id="@+id/price"
             android:layout_width="275dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="10dp"
             android:text="4000 DH"

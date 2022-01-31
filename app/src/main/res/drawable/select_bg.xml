@@ -5,18 +5,19 @@
 
     <!--Radius of all four corners-->
     <corners
-        android:bottomRightRadius="50dp"
-        android:bottomLeftRadius="10dp"
-        android:topLeftRadius="50dp"
-        android:topRightRadius="10dp"/>
+        android:radius="5dp"
+        />
 
     <!--Stroke size and color-->
-    <stroke android:width="3dp"
+
+    <stroke android:width="2dp"
         android:color="@color/shineColor" />
 
     <!--Fill Color of the Button-->
-    <solid android:color="@color/white"/>
+    <solid android:color="@color/firstColor"/>
 
     <!--Fill Color of the Button-->
+
+
 
 </shape>

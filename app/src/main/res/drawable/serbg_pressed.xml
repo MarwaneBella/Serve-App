@@ -15,7 +15,7 @@
         android:color="@color/shineColor" />
 
     <!--Fill Color of the Button-->
-    <solid android:color="@color/white"/>
+    <solid android:color="@color/firstColor"/>
 
     <!--Fill Color of the Button-->
 

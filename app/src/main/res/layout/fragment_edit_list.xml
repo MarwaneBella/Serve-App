@@ -20,7 +20,7 @@
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="My Services"
-
+            android:textColor="@color/firstColor"
             android:textSize="40sp"
             android:textStyle="bold|italic" />
 
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/textInputLayout"
-        android:layout_marginTop="20dp"
+
 
         />
     </LinearLayout>

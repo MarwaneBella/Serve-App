@@ -5,4 +5,7 @@
     android:ellipsize="end"
     android:maxLines="1"
     android:padding="16dp"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:textColor="@color/firstColor"
     android:textAppearance="?attr/textAppearanceSubtitle1"></TextView>

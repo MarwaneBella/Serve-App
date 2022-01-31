@@ -19,10 +19,10 @@
     <item>
         <shape>
             <padding
-                android:bottom="1dp"
-                android:left="1dp"
-                android:right="1dp"
-                android:top="1dp" />
+                android:bottom="2dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="2dp" />
 
             <solid android:color="@color/shineColor" />
 
@@ -49,7 +49,8 @@
         <shape>
 
             <gradient
-                android:startColor="#0E0D0D"
+                android:startColor="@color/firstColor"
+                android:centerColor="#0E0D0D"
                 android:endColor="@color/firstColor"
 
                 android:angle="110" />

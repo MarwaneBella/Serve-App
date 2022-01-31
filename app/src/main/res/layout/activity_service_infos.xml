@@ -17,22 +17,25 @@
 
             >
 
+
             <ImageButton
                 android:id="@+id/imageButton"
-                android:layout_width="38dp"
-                android:layout_height="34dp"
-                app:srcCompat="@drawable/ic_arrow_back" />
-
+                android:layout_width="103dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/serbg_selector1"
+                app:srcCompat="@drawable/ic_arrow_back"
+                app:tint="@color/firstColor"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/avatar"
-                android:layout_width="175dp"
-                android:layout_height="144dp"
+                android:layout_width="137dp"
+                android:layout_height="115dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/white"
-                app:civ_border_color="@color/white"
+                app:civ_border_color="@color/shineColor"
                 app:civ_border_width="5dp" />
 
             <TextView
@@ -41,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Marwane bella"
-                android:textSize="40sp"
+                android:textSize="35sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_marginTop="15dp"/>
@@ -52,9 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="Informations of Service :"
-                android:textColor="@color/black"
+                android:textColor="@color/shineColor"
                 android:textStyle="bold"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,14 +75,16 @@
                     android:text="Category :"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#5A5A5A"
                     />
 
             </LinearLayout>
@@ -100,14 +105,16 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="Title of service :"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#5A5A5A"
                     />
 
             </LinearLayout>
@@ -127,14 +134,17 @@
                     android:text="Location :"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="18sp" />
+
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#5A5A5A"
                     />
 
             </LinearLayout>
@@ -154,14 +164,16 @@
                     android:text="Price :"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#5A5A5A"
                     />
 
             </LinearLayout>
@@ -180,17 +192,18 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="Description :"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginTop="5dp"
-                    android:textSize="18sp"
+                    android:layout_weight="1"
                     android:maxLength="650"
-                    android:text=""/>
+                    android:textStyle="bold"
+                    android:textColor="#5A5A5A"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -198,8 +211,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Contacts :"
-                android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textColor="@color/shineColor"
                 android:textStyle="bold"
                 android:layout_marginTop="40dp"/>
 
@@ -219,14 +232,16 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="Phone :"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#5A5A5A"
                     />
 
             </LinearLayout>

@@ -11,23 +11,33 @@
         <entry key="..\:/App/Services/app/src/main/res/drawable/btn_normal.xml" value="0.3828125" />
         <entry key="..\:/App/Services/app/src/main/res/drawable/btn_pressed.xml" value="0.36875" />
         <entry key="..\:/App/Services/app/src/main/res/drawable/btn_style.xml" value="0.36875" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/ic__money.xml" value="0.3828125" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/ic__title.xml" value="0.3828125" />
         <entry key="..\:/App/Services/app/src/main/res/drawable/ic_add.xml" value="0.3828125" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/ic_baseline_alternate_email_24.xml" value="0.3828125" />
         <entry key="..\:/App/Services/app/src/main/res/drawable/ic_home.xml" value="0.3828125" />
         <entry key="..\:/App/Services/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/App/Services/app/src/main/res/drawable/ic_listview.xml" value="0.3828125" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/ic_location.xml" value="0.3828125" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/ic_phone.xml" value="0.3828125" />
         <entry key="..\:/App/Services/app/src/main/res/drawable/list_bg.xml" value="0.3828125" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/select_bg.xml" value="0.3651041666666667" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/serbg_pressed.xml" value="0.3828125" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/serbg_selector.xml" value="0.3828125" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/serbg_selector2.xml" value="0.3828125" />
+        <entry key="..\:/App/Services/app/src/main/res/drawable/servbg.xml" value="0.3828125" />
         <entry key="..\:/App/Services/app/src/main/res/drawable/shadow_bg.xml" value="0.3828125" />
         <entry key="..\:/App/Services/app/src/main/res/layout-v28/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/App/Services/app/src/main/res/layout/activity_advert_services.xml" value="0.1" />
         <entry key="..\:/App/Services/app/src/main/res/layout/activity_edit_my_service.xml" value="0.33" />
         <entry key="..\:/App/Services/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/App/Services/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/App/Services/app/src/main/res/layout/activity_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/App/Services/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/App/Services/app/src/main/res/layout/activity_register.xml" value="0.33" />
-        <entry key="..\:/App/Services/app/src/main/res/layout/activity_service_infos.xml" value="0.36666666666666664" />
+        <entry key="..\:/App/Services/app/src/main/res/layout/activity_service_infos.xml" value="0.25" />
         <entry key="..\:/App/Services/app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
         <entry key="..\:/App/Services/app/src/main/res/layout/activity_test.xml" value="0.36666666666666664" />
-        <entry key="..\:/App/Services/app/src/main/res/layout/fragment_add_service.xml" value="0.33" />
+        <entry key="..\:/App/Services/app/src/main/res/layout/fragment_add_service.xml" value="0.38177874186550975" />
         <entry key="..\:/App/Services/app/src/main/res/layout/fragment_edit_list.xml" value="0.36666666666666664" />
         <entry key="..\:/App/Services/app/src/main/res/layout/fragment_home.xml" value="0.3383838383838384" />
         <entry key="..\:/App/Services/app/src/main/res/layout/fragment_list_view.xml" value="0.36666666666666664" />

@@ -17,32 +17,37 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="40dp"
             android:hint="@string/select"
-            android:padding="3dp"
-            android:textColorHint="@color/firstColor"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeWidth="1.5dp">
+            android:textColorHint="@color/shineColor"
+
+            app:endIconTint="@color/shineColor"
+            app:startIconTint="@color/shineColor"
+            android:background="@drawable/select_bg"
+            app:hintTextAppearance="@style/TextLabel"
+            app:boxBackgroundColor="@color/firstColor"
+            android:padding="2dp"
+
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+
+            >
 
             <AutoCompleteTextView
                 android:id="@+id/auto_complete_txt"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/firstColor"
-                android:inputType="none"
-                android:text="All"
-                android:textColor="@color/firstColor"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:paddingTop="35dp"
+                android:paddingLeft="20dp"
+                android:text="All"
+                android:inputType="none"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <ListView

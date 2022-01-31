@@ -11,7 +11,7 @@
     <string name="textHaveAcc">Have an account? Log in</string>
     <string name="textMale">Male</string>
     <string name="textFemale">Female</string>
-    <string name="select">Select category</string>
+    <string name="select"><font size="50">Select category</font></string>
     <string-array name="category1">
         <item>Delivery</item>
         <item>Bill payment</item>

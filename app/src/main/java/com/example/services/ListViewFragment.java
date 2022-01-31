@@ -127,7 +127,7 @@ public class ListViewFragment extends Fragment {
                                     keyServices.add(snapshot.getKey());
                                     Service service = snapshot.getValue(Service.class);
                                     titles.add(service.getTitleService());
-                                    prices.add(service.getPrice());
+                                    prices.add(service.getPrice()+" DH");
 
                                     ListView listView = rootView.findViewById(R.id.list_item);
                                     ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
@@ -206,7 +206,7 @@ public class ListViewFragment extends Fragment {
                                             keyServices.add(snapshot.getKey());
                                             Service service = snapshot.getValue(Service.class);
                                             titles.add(service.getTitleService());
-                                            prices.add(service.getPrice());
+                                            prices.add(service.getPrice()+" DH");
 
 
                                             listView = rootView.findViewById(R.id.list_item);
@@ -268,7 +268,7 @@ public class ListViewFragment extends Fragment {
                                                 keyServices.add(snapshot.getKey());
                                                 Service service = snapshot.getValue(Service.class);
                                                 titles.add(service.getTitleService());
-                                                prices.add(service.getPrice());
+                                                prices.add(service.getPrice()+" DH");
 
                                                 ListView listView = rootView.findViewById(R.id.list_item);
                                                 ListBaseAdapter Adapter = new ListBaseAdapter(rootView.getContext(), usernames, userImages, titles, prices);
